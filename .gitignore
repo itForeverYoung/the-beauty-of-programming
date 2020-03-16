@@ -1,0 +1,16 @@
+#Windows
+
+
+#idea
+/.idea/
+
+
+#Java
+*.class
+
+
+#Maven
+/.mvn/
+mvnw*
+
+the-beauty-of-programming.iml
