@@ -1,11 +1,14 @@
 package sort;
 
 import sort.bubble.BubbleSort;
+import sort.bucket.BucketSort;
+import sort.counting.CountingSort;
 import sort.heap.HeapSort;
 import sort.insertion.InsertionSort;
 import sort.merge.MultiMergeSort;
 import sort.merge.TwoMergeSort;
 import sort.quick.QuickSort;
+import sort.radix.RadixSort;
 import sort.selection.SelectionSort;
 import sort.shell.ShellSort;
 
@@ -15,6 +18,7 @@ import java.util.Random;
 /**
  * @author zhanj566
  * @date 2020/5/27 10:19 AM
+ * all in one test
  **/
 public class Test {
 
@@ -44,32 +48,66 @@ public class Test {
      * @param args
      */
     public static void main(String[] args) {
+        int[] nums;
         // 冒泡排序
-        System.out.print("冒泡排序结果：");
-        Arrays.stream(BubbleSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
+        nums = nums();
+        System.out.printf("%n冒泡排序结果：");
+        Arrays.stream(BubbleSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
         // 快速排序
+        nums = nums();
         System.out.printf("%n快速排序结果：");
-        Arrays.stream(QuickSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
+        Arrays.stream(QuickSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
         // 二路归并排序
+        nums = nums();
         System.out.printf("%n二路归并结果：");
-        Arrays.stream(TwoMergeSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
+        Arrays.stream(TwoMergeSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
         // 多路归并排序
-        System.out.printf("%n多路归并结果：");
-        Arrays.stream(MultiMergeSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
+        // nums = nums();
+        // System.out.printf("%n多路归并结果：");
+        // Arrays.stream(MultiMergeSort.sort(nums, 5)).forEach(r -> System.out.printf("%s%s", r, ", "));
         // 插入排序
+        nums = nums();
         System.out.printf("%n插入排序结果：");
-        Arrays.stream(InsertionSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
+        Arrays.stream(InsertionSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
         // 希尔排序
+        nums = nums();
         System.out.printf("%n希尔排序结果：");
-        Arrays.stream(ShellSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
+        Arrays.stream(ShellSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
         // 选择排序
+        nums = nums();
         System.out.printf("%n选择排序结果：");
-        Arrays.stream(SelectionSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
-        // 堆排序
-        System.out.printf("%n堆排序结果：");
-        Arrays.stream(HeapSort.sort(gen(10))).forEach(r -> System.out.printf("%s%s", r, ", "));
-        //
+        Arrays.stream(SelectionSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
+        // 最大堆排序
+        nums = nums();
+        System.out.printf("%n最大堆结果：");
+        Arrays.stream(HeapSort.sort(nums, true)).forEach(r -> System.out.printf("%s%s", r, ", "));
+        // 最小堆排序
+        nums = nums();
+        System.out.printf("%n最小堆结果：");
+        Arrays.stream(HeapSort.sort(nums, false)).forEach(r -> System.out.printf("%s%s", r, ", "));
+        // 计数排序
+        nums = nums();
+        System.out.printf("%n计数排序结果：");
+        Arrays.stream(CountingSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
+        // 桶排序
+        nums = nums();
+        System.out.printf("%n桶排序结果：");
+        Arrays.stream(BucketSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
+        nums = nums();
+        // 基数排序
+        System.out.printf("%n基数排序结果：");
+        Arrays.stream(RadixSort.sort(nums)).forEach(r -> System.out.printf("%s%s", r, ", "));
     }
+
+    public static int[] nums() {
+        System.out.printf("%n----------%n原数组：");
+        int[] nums = gen(20);
+        Arrays.stream(nums).forEach(r -> System.out.printf("%s%s", r, ", "));
+        System.out.printf("%n自动排序结果：");
+        Arrays.stream(nums).sorted().forEach((value) -> System.out.printf("%s%s", value, ", "));
+        return nums;
+    }
+
 
     public static int[] gen(int length) {
         int[] nums = new int[length];

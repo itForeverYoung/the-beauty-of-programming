@@ -10,6 +10,16 @@ import java.util.Arrays;
  **/
 public class QuickSort {
 
+    /**
+     * 快速排序
+     * 把找到的基准位置的变量，和最后一个元素交换位置，然后遍历当前数组，把小于基准变量的元素放前边，大于基准变量的元素放后边
+     * 最后，再分别递归左右子序列
+     * 时间复杂度: 最好O(nlogN), 最坏O(n^2), 平均O(nlogN)
+     * 空间复杂度: O(logn)
+     * 稳定性: 不稳定
+     * @param nums
+     * @return
+     */
     public static int[] sort(int[] nums) {
         if (nums == null || nums.length <= 1) {
             return nums;
@@ -22,8 +32,9 @@ public class QuickSort {
 
     /**
      * 递归实现（原地分割版）
-     * 实现思想：把找到的基准位置的变量，和最后一个元素交换位置，然后遍历当前数组，
      * @param nums
+     * @param start 本次调用的起始点，也是上次调用的基准变量的最终位置（start-1/start+1）
+     * @param end
      * @return
      */
     public static void recursive(int[] nums, int start, int end) {

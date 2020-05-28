@@ -6,10 +6,19 @@ package sort.merge;
  **/
 public class MultiMergeSort {
 
-    public static int[] sort(int[] nums) {
-        int[] result = new int[nums.length];
+    /**
+     * 多路归并排序
+     * @param nums 待排序数组
+     * @param mul 需要几路归并
+     * @return
+     */
+    public static int[] sort(int[] nums, int mul) {
+        if (nums == null || nums.length <= 1) {
+            return nums;
+        }
+        int n = nums.length;
 
-        return result;
+        return nums;
     }
 
 }
